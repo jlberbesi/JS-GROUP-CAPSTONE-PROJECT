@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 import './styles.css';
 import Like from './like.png';
+import { AddLike, NewApp } from './Api.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -43,3 +44,14 @@ function renderItems(items) {
 }
 
 fetchItems().then((items) => renderItems(items));
+
+const username = 'lost';
+const comment = 'lorem';
+
+NewApp()
+  .then((appId) => {
+    AddLike(appId, username, comment);
+  })
+  .catch((error) => {
+    console.error('An error occurred:', error);
+  });
