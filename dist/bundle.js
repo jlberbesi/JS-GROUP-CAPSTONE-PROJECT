@@ -10,13 +10,33 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/Cards.js":
+/*!**********************!*\
+  !*** ./src/Cards.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* eslint-disable linebreak-style */\nfunction cards() {\n  var elements = document.querySelector('.elements');\n  for (var i = 0; i < 6; i += 1) {\n    var div = document.createElement('div');\n    elements.appendChild(div);\n    div.className = 'cposter';\n    div.innerHTML = \"\\n    <div class=\\\"CardFrame\\\"><img class=\\\"poster\\\" src=\\\"/Francavilla_JurassicPark_SDCC_V.jpg\\\" alt=\\\"\\\"></div>\\n    <ul class=\\\"buttons\\\">\\n      <li class=\\\"card\\\" >Card 1</li>\\n      <li><img class=\\\"like\\\" src=\\\"/like.png\\\" alt=\\\"\\\"></li>\\n    </ul>\\n    <button class=\\\"comment\\\">Show Comments</button>\\n   \";\n  }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cards);\n\n//# sourceURL=webpack://js-group-capstone-project/./src/Cards.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _Cards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cards.js */ \"./src/Cards.js\");\n/* eslint-disable linebreak-style */\n\n\n(0,_Cards_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n//# sourceURL=webpack://js-group-capstone-project/./src/index.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/styles.css":
 /*!**************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/styles.css ***!
   \**************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `body {\n  background-color: rgb(255, 225, 0);\n  width: 100%;\n  font-family: 'Preahvihear', sans-serif;\n  margin: 0;\n}\n\n.header {\n  width: 100%;\n  list-style: none;\n  display: flex;\n  flex-direction: row;\n  color: rgb(241, 229, 0);\n  height: 100px;\n  align-items: center;\n  font-size: 20px;\n  padding: 0;\n  padding-left: 30px;\n  background-color: rgb(8, 43, 180);\n  margin: 0;\n}\n\n.elements {\n  display: grid;\n  grid-template-columns: 30% 30% 30%;\n  justify-content: center;\n  align-items: center;\n  margin-top: 200px;\n}\n\n.buttons {\n  list-style: none;\n  display: flex;\n  flex-direction: row;\n  color: rgb(241, 229, 0);\n}\n\n.logo {\n  height: 60px;\n  background-size: cover;\n  border: 4px solid rgb(241, 209, 0);\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin-right: 70px;\n  font-size: 30px;\n  padding: 5px;\n  padding-left: 30px;\n  position: relative;\n}\n\n.menu {\n  margin-right: 230px;\n}\n\n.Micon {\n  height: 30px;\n  width: 30px;\n}\n\n.cposter {\n  padding: 10px;\n  padding-right: 20px;\n}\n\n.CardFrame {\n  width: 280px;\n  height: 400px;\n}\n\n.card {\n  text-align: center;\n  display: flex;\n  align-items: center;\n  font-size: 40px;\n  color: rgb(10, 49, 203);\n}\n\n.poster {\n  width: 280px;\n  height: 400px;\n}\n\n.like {\n  width: 50px;\n  height: 50px;\n}\n\n.comment {\n  background-color: rgb(10, 49, 203);\n  color: rgb(255, 225, 0);\n  font-size: 25px;\n  border-radius: 40%;\n}\n\nfooter {\n  background-color: rgb(10, 49, 203); \n  text-align: center;\n  padding: 20px 0; \n}\n\nfooter h2 {\n  margin: 0; /* Elimina el margen predeterminado del encabezado */\n  color: white; /* Color del texto en azul */\n}\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://js-group-capstone-project/./src/styles.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `body {\n  background-color: rgb(255, 225, 0);\n  width: 100%;\n  font-family: 'Preahvihear', sans-serif;\n  margin: 0;\n}\n\n.header {\n  width: 100%;\n  list-style: none;\n  display: flex;\n  flex-direction: row;\n  color: rgb(241, 229, 0);\n  height: 100px;\n  align-items: center;\n  font-size: 20px;\n  padding: 0;\n  padding-left: 30px;\n  background-color: rgb(8, 43, 180);\n  margin: 0;\n}\n\n.elements {\n  display: grid;\n  grid-template-columns: 30% 30% 30%;\n  justify-content: center;\n  align-items: center;\n  margin-top: 200px;\n}\n\n.buttons {\n  list-style: none;\n  display: flex;\n  flex-direction: row;\n  color: rgb(241, 229, 0);\n}\n\n.logo {\n  height: 60px;\n  background-size: cover;\n  border: 4px solid rgb(241, 209, 0);\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin-right: 70px;\n  font-size: 30px;\n  padding: 5px;\n  padding-left: 30px;\n  position: relative;\n}\n\n.menu {\n  margin-right: 230px;\n}\n\n.Micon {\n  height: 30px;\n  width: 30px;\n}\n\n.cposter {\n  padding: 10px;\n  padding-right: 20px;\n}\n\n.CardFrame {\n  width: 280px;\n  height: 400px;\n}\n\n.card {\n  text-align: center;\n  display: flex;\n  align-items: center;\n  font-size: 40px;\n  color: rgb(10, 49, 203);\n}\n\n.poster {\n  width: 280px;\n  height: 400px;\n}\n\n.like {\n  width: 50px;\n  height: 50px;\n}\n\n.comment {\n  background-color: rgb(10, 49, 203);\n  color: rgb(255, 225, 0);\n  font-size: 25px;\n  border-radius: 40%;\n}\n\nfooter {\n  background-color: rgb(10, 49, 203);\n  text-align: center;\n  padding: 20px 0;\n}\n\nfooter h2 {\n  margin: 0;\n  color: white;\n}\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://js-group-capstone-project/./src/styles.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -107,26 +127,6 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj
 /***/ ((module) => {
 
 eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElement) {\n  if (styleElement.styleSheet) {\n    styleElement.styleSheet.cssText = css;\n  } else {\n    while (styleElement.firstChild) {\n      styleElement.removeChild(styleElement.firstChild);\n    }\n    styleElement.appendChild(document.createTextNode(css));\n  }\n}\nmodule.exports = styleTagTransform;\n\n//# sourceURL=webpack://js-group-capstone-project/./node_modules/style-loader/dist/runtime/styleTagTransform.js?");
-
-/***/ }),
-
-/***/ "./src/Cards.js":
-/*!**********************!*\
-  !*** ./src/Cards.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* eslint-disable linebreak-style */\nfunction cards() {\n  const elements = document.querySelector('.elements');\n  for (let i = 0; i < 6; i += 1) {\n    const div = document.createElement('div');\n    elements.appendChild(div);\n    div.className = ('cposter');\n    div.innerHTML = `\n    <div class=\"CardFrame\"><img class=\"poster\" src=\"/Francavilla_JurassicPark_SDCC_V.jpg\" alt=\"\"></div>\n    <ul class=\"buttons\">\n      <li class=\"card\" >Card1</li>\n      <li><img class=\"like\" src=\"/like.png\" alt=\"\"></li>\n    </ul>\n    <button class=\"comment\">Comments</button>\n   `;\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cards);\n\n\n//# sourceURL=webpack://js-group-capstone-project/./src/Cards.js?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _Cards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cards.js */ \"./src/Cards.js\");\n/* eslint-disable linebreak-style */\n\n\n\n(0,_Cards_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n//# sourceURL=webpack://js-group-capstone-project/./src/index.js?");
 
 /***/ })
 
