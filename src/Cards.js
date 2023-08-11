@@ -8,10 +8,10 @@ function cards() {
     div.innerHTML = `
     <div class="CardFrame"><img class="poster" src="/Francavilla_JurassicPark_SDCC_V.jpg" alt=""></div>
     <ul class="buttons">
-      <li class="card" >Card1</li>
+      <li class="card" >Card 1</li>
       <li><img class="like" src="/like.png" alt=""></li>
     </ul>
-    <button class="comment">Comments</button>
+    <button class="comment">Show Comments</button>
    `;
   }
 }
