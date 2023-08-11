@@ -136,3 +136,7 @@ footer h2 {
   cursor: pointer;
   margin-top: 10px;
 }
+
+.item-like-btn {
+  background: none;
+}

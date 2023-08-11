@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import './styles.css';
+import Like from './like.png';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -28,7 +29,7 @@ function renderItems(items) {
     <h2>${item.name}</h2>
     <p>${item.summary}</p>
     <div class="item-buttons">
-      <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"></button>
+      <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"><img class="like" src="${Like}" alt=""></button>
     </div>
   `;
 
