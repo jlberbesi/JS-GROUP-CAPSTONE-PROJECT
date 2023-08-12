@@ -1,6 +1,7 @@
-/* eslint-disable linebreak-style */
+// eslint-disable-next-line import/extensions, import/no-unresolved
 import './styles.css';
 import showComments from './modules/popup.js';
+import { countItems, countComments } from './modules/itemCounter.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -21,14 +22,13 @@ function renderItems(items) {
   items.forEach((item) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
-    itemElement.innerHTML = `
-      <h2>${item.name}</h2>
-      <p>${item.summary}</p>
-      <button class="comments-button">Show Comments</button>`;
+    itemElement.innerHTML = `<h2>${item.name}</h2><p>${item.summary}</p>`;
 
-    const commentsButton = itemElement.querySelector('.comments-button');
+    const commentsButton = document.createElement('button');
+    commentsButton.innerText = 'Show Comments';
     commentsButton.addEventListener('click', () => showComments(item));
 
+    itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
   });
 }
