@@ -3,7 +3,7 @@
 import './styles.css';
 import Like from './like.png';
 import showComments from './modules/popup.js';
-import { LikeBtn, UpdateLikes } from './Api.js';
+import { LikeBtn } from './Api.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 const ShowsID = [];
