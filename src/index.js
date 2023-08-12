@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import './styles.css';
 import showComments from './modules/popup.js';
-import { countItems, countComments } from './modules/itemCounter.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -22,7 +21,7 @@ function renderItems(items) {
   items.forEach((item) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
-    itemElement.innerHTML = `<h2>${item.name}</h2><p>${item.summary}</p>`;
+    itemElement.innerHTML = `<img class="poppup__img" src="${item.image.medium}"><h2>${item.name}</h2>`;
 
     const commentsButton = document.createElement('button');
     commentsButton.innerText = 'Show Comments';

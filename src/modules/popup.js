@@ -1,9 +1,8 @@
 import imgX from '../delete.png';
 import { postData, getData } from './post-get.js';
+import countComment from './counter_comments.js';
 
 const containerPopup = document.querySelector('.popup__container');
-
-// Function to submit a new comment to the Involvement API
 
 const submitComment = (items) => {
   const username = document.getElementById('username__input');
@@ -12,7 +11,7 @@ const submitComment = (items) => {
   const btncomments = document.getElementById('btn-submit__comments');
   btncomments.addEventListener('click', async () => {
     if (username.value.trim() === '' || comment.value.trim() === '') {
-      return; // Exit the function if any field is empty
+      return;
     }
 
     await postData(items, username, comment);
@@ -22,8 +21,6 @@ const submitComment = (items) => {
   });
 };
 
-// Function to close the popup window with the button "X"
-
 const closePopup = () => {
   const btnX = document.querySelector('.popup__btn_x');
   btnX.addEventListener('click', () => {
@@ -31,7 +28,6 @@ const closePopup = () => {
   });
 };
 
-// Show popup window with corresponding information
 const showComments = (items) => {
   getData(items);
   containerPopup.innerHTML = `
@@ -43,6 +39,7 @@ const showComments = (items) => {
   </div>
     <div class="popup__details">
       <h2 class="popup__title">${items.name}</h2>
+      <p class="">${items.summary}</p>
       <p class="popup__genres">Category: ${items.genres}</p>
       <p class="popup__runtime">Duration: ${items.runtime} min</p>
     </div>
