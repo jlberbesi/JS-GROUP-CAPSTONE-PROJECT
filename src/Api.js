@@ -55,4 +55,20 @@ const getLikes = async (app_id) => {
   }
 };
 
-export { AddLike, NewApp, getLikes};
+const updateLikes = async (app_id) => {
+  try {
+    const url = `${baseUrl + appsEndpoint + app_id}/likes`;
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log('Likes updated successfully');
+  } catch (error) {
+    console.error('Error updating likes:', error);
+  }
+};
+
+export { AddLike, NewApp, getLikes, updateLikes};
