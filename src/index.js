@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import './styles.css';
 import showComments from './modules/popup.js';
