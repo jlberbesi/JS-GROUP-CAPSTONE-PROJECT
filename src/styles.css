@@ -129,6 +129,12 @@ footer h2 {
   color: #444;
 }
 
+.item-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .item button {
   border: none;
   padding: 8px 16px;
@@ -139,4 +145,5 @@ footer h2 {
 
 .item-like-btn {
   background: none;
+  padding: 0;
 }

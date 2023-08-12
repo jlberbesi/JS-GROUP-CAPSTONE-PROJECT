@@ -38,8 +38,23 @@ const AddLike = async (item_id, username, comment) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      console.log('Respuesta exitosa:', response.statusText); // Muestra el mensaje de éxito en la consola
     });
 };
 
-export { AddLike, NewApp };
+const getLikes = async (app_id, item_id) => {
+  const url = `${baseUrl + appsEndpoint + app_id}/likes`;
+  const response = await fetch(url);
+
+  if (response.ok) {
+    const data = await response.json();
+
+    const likesData = data.find((item) => item.item_id === item_id);
+    if (likesData) {
+      return likesData.likes;
+    }
+  }
+
+  return 0; // Si no se encuentran likes para el item, retornar 0
+};
+
+export { AddLike, NewApp, getLikes };

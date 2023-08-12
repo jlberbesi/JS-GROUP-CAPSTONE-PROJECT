@@ -1,7 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-await-in-loop */
 import './styles.css';
 import Like from './like.png';
-import { AddLike, NewApp } from './Api.js';
+import { AddLike, NewApp, getLikes } from './Api.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -19,20 +20,30 @@ function showComments() {
 
 }
 
-function renderItems(items) {
+async function renderItems(items) {
   const itemsContainer = document.getElementById('items-container');
   itemsContainer.innerHTML = '';
 
-  items.forEach((item) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of items) {
+    // eslint-disable-next-line camelcase,
+    const app_id = await NewApp();
+
+    const likes = await getLikes(app_id, item.id);
+
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
-    itemElement.innerHTML = `<img class="card__img" src="${item.image.medium}">
-    <h2>${item.name}</h2>
-    <p>${item.summary}</p>
-    <div class="item-buttons">
-      <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"><img class="like" src="${Like}" alt=""></button>
-    </div>
-  `;
+    itemElement.innerHTML = `
+      <img class="card__img" src="${item.image.medium}">
+      <h2>${item.name}</h2>
+      <p>${item.summary}</p>
+      <p>Likes: ${likes}</p>
+      <div class="item-buttons">
+        <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like">
+          <img class="like" src="${Like}" alt="">
+        </button>
+      </div>
+    `;
 
     const commentsButton = document.createElement('button');
     commentsButton.innerText = 'Show Comments';
@@ -40,13 +51,11 @@ function renderItems(items) {
 
     itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
+
     const username = item.name;
     const comment = item.summary;
 
-    NewApp()
-      .then((appId) => {
-        AddLike(appId, username, comment);
-      });
-  });
+    AddLike(app_id, username, comment);
+  }
 }
 fetchItems().then((items) => renderItems(items));
