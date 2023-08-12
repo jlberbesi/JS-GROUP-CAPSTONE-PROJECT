@@ -10,7 +10,7 @@ function NewApp() {
   })
     .then((response) => {
       if (response.status === 201) {
-        return response.text(); // Devolver directamente el texto de la respuesta
+        return response.text(); 
       }
       throw new Error('Error creating the app');
     })
@@ -21,7 +21,7 @@ function NewApp() {
 
 // eslint-disable-next-line camelcase
 const AddLike = async (item_id, username, comment) => {
-  const appId = await NewApp(); // Obtener el identificador único de la aplicación
+  const appId = await NewApp(); 
   const url = baseUrl + appsEndpoint + appId + likesEndpoint;
   await fetch(url, {
     method: 'POST',
@@ -54,7 +54,7 @@ const getLikes = async (app_id, item_id) => {
     }
   }
 
-  return 0; // Si no se encuentran likes para el item, retornar 0
+  return 0;
 };
 
 export { AddLike, NewApp, getLikes };
