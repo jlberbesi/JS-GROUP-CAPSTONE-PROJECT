@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import './styles.css';
 import Like from './like.png';
-import { AddLike, NewApp, getLikes } from './Api.js';
+import { AddLike, NewApp, getLikes} from './Api.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -29,7 +29,7 @@ function renderItems(items) {
     itemElement.innerHTML = `<img class="card__img" src="${item.image.medium}">
     <h2>${item.name}</h2>
     <p>${item.summary}</p>
-    <h4 id="likes-${item.id}">Likes: 0</h4> <!-- Crear la etiqueta <h4> para los likes -->
+    <h4 id="likes-${item.id}">Likes: 0</h4>
 
     <div class="item-buttons">
       <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"><img class="like" src="${Like}" alt=""></button>
@@ -42,19 +42,21 @@ function renderItems(items) {
 
     itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
-
-    NewApp()
-      .then((appId) => {
-        AddLike(item.id);
-        getLikes(appId).then((likesData) => {
-          const likesElement = document.getElementById(`likes-${item.id}`);
-          if (likesData.length > 0) {
-            // eslint-disable-next-line prefer-destructuring
-            const likes = likesData[item.id].likes;
-            likesElement.innerText = `Likes: ${likes}`;
-          }
+    const likeButton = itemElement.querySelector('.item-like-btn');
+    likeButton.addEventListener('click', async () => {
+      NewApp()
+        .then((appId) => {
+          AddLike(item.id);
+          getLikes(appId).then((likesData) => {
+            const likesElement = document.getElementById(`likes-${item.id}`);
+            if (likesData.length > 0) {
+              // eslint-disable-next-line prefer-destructuring
+              const likes = likesData[item.id].likes + 1;
+              likesElement.innerText = `Likes: ${likes}`;
+            }
+          });
         });
-      });
+    });
   });
 }
 fetchItems().then((items) => renderItems(items));

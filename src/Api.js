@@ -45,14 +45,14 @@ const getLikes = async (app_id) => {
     const response = await fetch(url);
 
     if (response.ok) {
-      const data = response; // No es necesario parsear a JSON
+      const data = response;
       return data;
     }
-    return []; // Retornar un array vacío si no se encuentran likes
+    return [];
   } catch (error) {
     console.error('Error fetching likes:', error);
     return [];
   }
 };
 
-export { AddLike, NewApp, getLikes };
+export { AddLike, NewApp, getLikes};
