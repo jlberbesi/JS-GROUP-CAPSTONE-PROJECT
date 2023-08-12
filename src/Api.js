@@ -18,6 +18,7 @@ function NewApp() {
       console.error('An error occurred:', error);
     });
 }
+
 // eslint-disable-next-line camelcase
 const AddLike = async (item_id, username, comment) => {
   const appId = await NewApp(); // Obtener el identificador único de la aplicación
@@ -37,13 +38,7 @@ const AddLike = async (item_id, username, comment) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      return response.json(); // Parseamos la respuesta como JSON
-    })
-    .then((data) => {
-      console.log('Respuesta exitosa:', data); // Muestra la respuesta en la consola
-    })
-    .catch((error) => {
-      console.error('Error en la petición:', error); // Maneja errores de la petición
+      console.log('Respuesta exitosa:', response.statusText); // Muestra el mensaje de éxito en la consola
     });
 };
 

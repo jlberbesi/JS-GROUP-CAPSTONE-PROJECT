@@ -40,18 +40,13 @@ function renderItems(items) {
 
     itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
+    const username = item.name;
+    const comment = item.summary;
+
+    NewApp()
+      .then((appId) => {
+        AddLike(appId, username, comment);
+      });
   });
 }
-
 fetchItems().then((items) => renderItems(items));
-
-const username = 'lost';
-const comment = 'lorem';
-
-NewApp()
-  .then((appId) => {
-    AddLike(appId, username, comment);
-  })
-  .catch((error) => {
-    console.error('An error occurred:', error);
-  });
