@@ -1,48 +1,64 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable camelcase */
 import './styles.css';
-import Like from './like.png';
 import showComments from './modules/popup.js';
-import { LikeBtn } from './Api.js';
+import { postLike } from './modules/post-get.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
-const ShowsID = [];
+const app_id = 's14u04tuKMAoE5jNDTZW';
 async function fetchItems() {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error('Error fetching items:', error);
     return [];
   }
 }
-
-function renderItems(items) {
+async function fetchLikes() {
+  try {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${app_id}/likes`);
+    const likesData = await response.json();
+    return likesData;
+  } catch (error) {
+    console.error('Error fetching likes:', error);
+    return [];
+  }
+}
+async function renderItems() {
   const itemsContainer = document.getElementById('items-container');
   itemsContainer.innerHTML = '';
-
+  const items = await fetchItems();
+  const likes = await fetchLikes();
   items.forEach((item) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
-    itemElement.innerHTML = `<img class="poppup__img" src="${item.image.medium}"><h2>${item.name}</h2>
-    <div class="item-buttons">
-    <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"><img class="like" src="${Like}" alt=""></button>
-  </div>`;
-    ShowsID.push(item.id);
-
-    const likesCount = document.createElement('span');
-    likesCount.className = 'likes_count';
-    likesCount.innerText = '0';
-    itemElement.appendChild(likesCount);
-
-    LikeBtn(itemElement.querySelector('.item-like-btn'), likesCount);
-
-    const commentsButton = document.createElement('button');
-    commentsButton.innerText = 'Show Comments';
+    itemElement.dataset.itemId = item.id;
+    const likesCount = likes.find((like) => like.item_id === item.id)?.likes || 0;
+    itemElement.innerHTML = `
+      <img class="poppup__img" src="${item.image.medium}">
+      <h2>${item.name}</h2>
+      <button class="item-like-btn">Like</button>
+      <span class="like-counter">${likesCount}</span>
+      <button class="comments-btn">Show Comments</button>`;
+    const likeButton = itemElement.querySelector('.item-like-btn');
+    // eslint-disable-next-line no-use-before-define
+    likeButton.addEventListener('click', () => handleLikeButtonClick(item));
+    const commentsButton = itemElement.querySelector('.comments-btn');
     commentsButton.addEventListener('click', () => showComments(item));
-    itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
   });
 }
-
-fetchItems().then((items) => renderItems(items));
+async function handleLikeButtonClick(item) {
+  try {
+    await postLike(app_id, item.id);
+    const likeCounter = document.querySelector(`[data-item-id="${item.id}"] .like-counter`);
+    if (likeCounter) {
+      likeCounter.textContent = parseInt(likeCounter.textContent, 10) + 1;
+    }
+  } catch (error) {
+    console.error('Error adding like:', error);
+  }
+}
+renderItems();
