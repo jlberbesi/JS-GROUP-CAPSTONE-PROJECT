@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 import './styles.css';
-import Like from './like.png';
+import showComments from './modules/popup.js';
 
 const apiUrl = 'https://api.tvmaze.com/shows';
 
@@ -14,10 +14,6 @@ async function fetchItems() {
   }
 }
 
-function showComments() {
-
-}
-
 function renderItems(items) {
   const itemsContainer = document.getElementById('items-container');
   itemsContainer.innerHTML = '';
@@ -25,19 +21,14 @@ function renderItems(items) {
   items.forEach((item) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
-    itemElement.innerHTML = `<img class="card__img" src="${item.image.medium}">
-    <h2>${item.name}</h2>
-    <p>${item.summary}</p>
-    <div class="item-buttons">
-      <button class="item-like-btn" data-item-id="${item.id}" aria-label="Like"><img class="like" src="${Like}" alt=""></button>
-    </div>
-  `;
+    itemElement.innerHTML = `
+      <h2>${item.name}</h2>
+      <p>${item.summary}</p>
+      <button class="comments-button">Show Comments</button>`;
 
-    const commentsButton = document.createElement('button');
-    commentsButton.innerText = 'Show Comments';
-    commentsButton.addEventListener('click', showComments);
+    const commentsButton = itemElement.querySelector('.comments-button');
+    commentsButton.addEventListener('click', () => showComments(item));
 
-    itemElement.appendChild(commentsButton);
     itemsContainer.appendChild(itemElement);
   });
 }
