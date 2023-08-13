@@ -113,7 +113,7 @@ To run tests, run the following command:
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- https://
+- https://jlberbesi.github.io/JS-GROUP-CAPSTONE-PROJECT/dist/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
