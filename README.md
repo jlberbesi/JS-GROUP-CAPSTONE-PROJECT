@@ -29,9 +29,9 @@ MazTV showcases TV series, enabling user interaction via likes and comments. Obj
 
 ### Tech Stack <a name="tech-stack"></a>
 
-- HTML
-- CSS
-- JAVASCRIPT
+- HTML.
+- CSS.
+- JAVASCRIPT.
 
 </a>
 
