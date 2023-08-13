@@ -20,9 +20,9 @@ const postData = async (items, user, usercomment) => {
     console.error('Error adding comment:', error);
   }
 };
-const fetchLikes = async (item) => {
+const fetchLikes = async (itemId) => {
   try {
-    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/s14u04tuKMAoE5jNDTZW/likes?item_id=${item.id}`);
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/s14u04tuKMAoE5jNDTZW/likes?item_id=${itemId}`);
     const likesData = await response.json();
     return likesData[0]?.likes || 0;
   } catch (error) {
@@ -33,8 +33,8 @@ const renderComments = (data) => {
   const commentsContainer = document.querySelector('.container__comments');
   commentsContainer.innerHTML = '';
   if (Array.isArray(data)) {
-    data.forEach((data) => {
-      commentsContainer.innerHTML += `<p class="comment"><strong>${data.username}:</strong> ${data.comment}</p>`;
+    data.forEach((commentData) => {
+      commentsContainer.innerHTML += `<p class="comment"><strong>${commentData.username}:</strong> ${commentData.comment}</p>`;
     });
   }
 };
@@ -47,13 +47,11 @@ const getData = async (items) => {
     console.error('Error fetching comments:', error);
   }
 };
-// eslint-disable-next-line camelcase
-const postLike = async (app_id, item_id) => {
+const postLike = async (appId, itemId) => {
   try {
-    // eslint-disable-next-line camelcase
-    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${app_id}/likes`, {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/likes`, {
       method: 'POST',
-      body: JSON.stringify({ item_id }),
+      body: JSON.stringify({ item_id: itemId }),
       headers: {
         'Content-Type': 'application/json',
       },

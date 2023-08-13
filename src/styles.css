@@ -257,6 +257,7 @@ footer h2 {
 }
 
 .item-like-btn {
+  background: none;
   background-color: #4caf50;
   color: white;
   border: none;
